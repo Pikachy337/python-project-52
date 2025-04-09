@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block navigation %}
+<link href="static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/navbar.css" rel="stylesheet">
+<header class="flex-shrink-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">{% translate "Task manager" %}</a>
+            {% get_current_language as CURRENT_LANGUAGE %}
+            {% if CURRENT_LANGUAGE == "ru" %}
+            <form method="post" action="{% url 'set_language' %}">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="en" />
+                <button class="btn btn-dark" type="submit">English</button>
+            </form>
+            {% elif CURRENT_LANGUAGE == "en" %}
+            <form method="post" action="{% url 'set_language' %}">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="ru" />
+                <button class="btn btn-dark" type="submit">Русский</button>
+            </form>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#task_manager" aria-controls="task_manager" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="task_manager">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "users" %}">{% translate "Users" %}</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "statuses" %}">{% translate "Statuses" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "labels" %}">{% translate "Labels" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "tasks" %}">{% translate "Tasks" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "logout" %}">{% translate "Exit" %}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "login" %}">{% translate "Sign in" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "user_create" %}">{% translate "Sign up" %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% comment %} <script src="../../assets/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+
+{% block footer %}
+<link href="static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/footers.css" rel="stylesheet">
+
+<footer class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <a class="col-md-4 mb-0" href="https://ru.hexlet.io/">Hexlet</a>
+    </div>
+</footer>
+{% endblock %}

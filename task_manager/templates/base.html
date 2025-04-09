@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load django_bootstrap5 %}
+{% get_current_language as CURRENT_LANGUAGE %}
+{% bootstrap_setting "color_mode" as COLOR_MODE %}
+<html lang="{{ CURRENT_LANGUAGE|default:'en' }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block bootstrap5_title %}Task manager{% endblock %}</title>
+        {% bootstrap_css %}
+    </head>
+    <body class="min-vh-100 d-flex flex-column">
+        {% block navigation %}(no navbar){% endblock %}
+        <div class="container wrapper flex-grow-1">
+            {% bootstrap_messages %}
+            {% block main %}(no main){% endblock %}
+        </div>
+        {% block footer %}(no footer){% endblock %}
+        {% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+    </body>
+</html>
