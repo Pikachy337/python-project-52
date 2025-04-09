@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,9 @@ SECRET_KEY = 'django-insecure-5%vcs0p7)vt&md4l54l(vd_)&=twa5ddv8be90nbv(d+%p7rys
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'webserver'
+    'webserver',
+    '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -34,6 +37,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'task_manager',
+    'task_manager.users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -114,7 +118,11 @@ LANGUAGES = (
     ("en", "English"),
 )
 
-LANGUAGE_CODE = 'en-us'
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'task_manager', 'locale'),
+]
+
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -131,4 +139,7 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+AUTH_USER_MODEL = "users.CustomUser"
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
