@@ -1,7 +1,25 @@
-[project]
+[tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Add your description here"
+description = "Task manager"
+authors = ["Dmitry Yarinsky <pikachyshkaa@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.7"
+django-bootstrap5 = "^24.2"
+whitenoise = "^6.7.0"
+psycopg2-binary = "^2.9.9"
+dj-database-url = "^2.2.0"
+python-dotenv = "^1.0.1"
+gunicorn = "^22.0.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
