@@ -20,6 +20,14 @@
             <li class="list-group-item">
                 <strong>{% trans 'Created at' %}:</strong> {{ task.created_at|date:"d.m.Y H:i" }}
             </li>
+            <li class="list-group-item">
+                <strong>{% trans 'Labels' %}:</strong>
+                {% for label in task.labels.all %}
+                <span class="badge bg-secondary">{{ label }}</span>
+                {% empty %}
+                {% trans 'No labels' %}
+                {% endfor %}
+            </li>
         </ul>
     </div>
 </div>
