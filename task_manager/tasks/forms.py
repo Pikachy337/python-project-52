@@ -4,10 +4,19 @@ from .models import Task
 from task_manager.statuses.models import Status
 from django.contrib.auth import get_user_model
 
+from ..labels.models import Label
+
 User = get_user_model()
 
 
 class TaskForm(forms.ModelForm):
+    labels = forms.ModelMultipleChoiceField(
+        queryset=Label.objects.all(),
+        required=False,
+        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
+        label=_('Labels')
+    )
+
     class Meta:
         model = Task
         fields = ['name', 'description', 'status', 'executor']
