@@ -18,5 +18,8 @@
         </div>
         {% block footer %}(no footer){% endblock %}
         {% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'statuses:list' %}">{% trans 'Statuses' %}</a>
+        </li>
     </body>
 </html>
