@@ -3,6 +3,30 @@
 
 {% block content %}
 <h1>{% trans 'Tasks' %}</h1>
+
+<form method="get" class="mb-4">
+    <div class="row g-3">
+        <div class="col-md-3">
+            {{ filter.form.status.label_tag }}
+            {{ filter.form.status }}
+        </div>
+        <div class="col-md-3">
+            {{ filter.form.executor.label_tag }}
+            {{ filter.form.executor }}
+        </div>
+        <div class="col-md-3">
+            {{ filter.form.labels.label_tag }}
+            {{ filter.form.labels }}
+        </div>
+        <div class="col-md-3">
+            <div class="form-check mt-4">
+                {{ filter.form.self_tasks }}
+                {{ filter.form.self_tasks.label_tag }}
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">{% trans 'Filter' %}</button>
+</form>
 <a href="{% url 'tasks:create' %}" class="btn btn-primary mb-3">
     {% trans 'Create task' %}
 </a>
