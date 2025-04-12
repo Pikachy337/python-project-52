@@ -120,9 +120,9 @@ LANGUAGES = (
     ("en", "English"),
 )
 
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'task_manager', 'locale'),
-]
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 LANGUAGE_CODE = 'ru'
 
