@@ -8,10 +8,7 @@ dev:
 	python manage.py runserver
 
 lint:
-	ruff check task_manager/
-
-lint-fix:
-	uv run ruff check --fix .
+	flake8 .
 
 start:
 	python manage.py runserver

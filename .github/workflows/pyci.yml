@@ -1,24 +1,42 @@
-name: Python CI
+name: CI
+
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.11.11]
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.12.3'
+
       - name: Install dependencies
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          make install
-      - name: Run linter
+          python -m pip install --upgrade pip
+          pip install uv flake8 pytest
+          uv sync
+
+      - name: Install additional dependencies and run tests
         run: |
-          make lint
+          pip install -e .
+          pip install pytest flask
+          python -m pytest tests/
+
+      - name: Run linter
+        run: flake8 .
+
+      - name: Run tests
+        run: |
+          python -m pytest  # Запускаем тесты
