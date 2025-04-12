@@ -20,6 +20,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf.urls.i18n import i18n_patterns
 
+from task_manager.views import LogoutUser
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 ]
@@ -27,7 +29,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('login/', LoginView.as_view(template_name='general/general_form.html'), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', LogoutUser.as_view(), name='logout'),
     path('users/', include('task_manager.apps.users.urls')),
     path('statuses/', include('task_manager.apps.statuses.urls')),
     path('tasks/', include('task_manager.apps.tasks.urls')),

@@ -4,7 +4,11 @@ from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.shortcuts import redirect
-
+from django.contrib.auth import logout
+from django.views import View
+from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
+from django.utils.decorators import method_decorator
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -13,6 +17,14 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['title'] = _('Task Manager')
         return context
+
+
+@method_decorator(require_POST, name='dispatch')  # Разрешаем только POST
+class LogoutUser(View):
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        messages.info(request, _("You were logged out"))
+        return redirect(reverse_lazy('home'))
 
 
 class BaseView(LoginRequiredMixin):

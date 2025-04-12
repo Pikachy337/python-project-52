@@ -45,7 +45,12 @@
                         <a class="nav-link" href="{% url 'tasks' %}">{% translate 'Tasks' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">{% translate 'Exit' %}</a>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link" style="border: none; background: none; cursor: pointer;">
+                                {% translate 'Exit' %}
+                            </button>
+                        </form>
                     </li>
                     {% else %}
                     <li class="nav-item">
