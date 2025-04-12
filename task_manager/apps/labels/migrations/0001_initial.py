@@ -26,7 +26,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(max_length=100, unique=True, verbose_name="Name"),
+                    models.CharField(max_length=100,
+                                     unique=True, verbose_name="Name"),
                 ),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 (

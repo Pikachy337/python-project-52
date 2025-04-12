@@ -1,28 +1,29 @@
-all: install
+install:
+	pip install uv
+	pip install gunicorn uvicorn
+	uv venv
+	uv pip install -r requirements.txt
+
+dev:
+	python manage.py runserver
+
+lint:
+	uv run ruff check .
+
+lint-fix:
+	uv run ruff check --fix .
+
+start:
+	python manage.py runserver
+
+render-start:
+	gunicorn task_manager.wsgi
 
 build:
-	@./build.sh
+	./build.sh
 
-install:
-	poetry install
+tests:
+	python manage.py test
 
-# dev
 migrate:
 	python manage.py migrate
-
-dev: install-dev
-	poetry run python manage.py runserver
-
-install-dev:
-	poetry install --with dev
-
-lint: install-dev
-	poetry run flake8 .
-
-test: install-dev
-	poetry run python manage.py test
-
-shell:
-	poetry run python manage.py shell_plus
-
-.PHONY: build install dev lint test shell

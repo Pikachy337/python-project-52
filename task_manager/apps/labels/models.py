@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from task_manager.tasks.models import Task
+from task_manager.apps.tasks.models import Task
 
 
 class Label(models.Model):

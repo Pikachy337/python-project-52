@@ -17,11 +17,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path("i18n/", include("django.conf.urls.i18n"), name="set_language"),
-    path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="index.html"),
-         name='index'),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
+urlpatterns += i18n_patterns(
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('login/', LoginView.as_view(template_name='general/general_form.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+
+    # Users
+    path('users/', include('task_manager.apps.users.urls')),
+
+    # Statuses
+    path('statuses/', include('task_manager.apps.statuses.urls')),
+
+    # Tasks
+    path('tasks/', include('task_manager.apps.tasks.urls')),
+
+    # Labels
+    path('labels/', include('task_manager.apps.labels.urls')),
+
+    path('admin/', admin.site.urls),
+)

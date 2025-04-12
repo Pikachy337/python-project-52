@@ -1,9 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
-from task_manager.tasks.models import Task
+from task_manager.apps.tasks.models import Task
 from .models import Label
+from task_manager.apps.statuses.models import Status
 
 User = get_user_model()
 
