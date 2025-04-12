@@ -30,6 +30,9 @@ class CustomLoginView(LoginView):
         context['button'] = _('Enter')
         return context
 
+    def get_success_url(self):
+        return reverse_lazy('home')
+
 
 class UserCreateView(CreateView):
     model = User
