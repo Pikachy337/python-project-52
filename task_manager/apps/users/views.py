@@ -7,16 +7,27 @@ from django.shortcuts import redirect
 from django.db import models
 from .models import User
 from .forms import UserForm
+from django.contrib.auth.views import LoginView
 
 
 class UserListView(ListView):
     model = User
-    template_name = 'user/user_list.html'
+    template_name = 'user/list.html'
     context_object_name = 'users'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = _('Users')
+        return context
+
+
+class CustomLoginView(LoginView):
+    template_name = 'general/general_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Login')
+        context['button'] = _('Enter')
         return context
 
 

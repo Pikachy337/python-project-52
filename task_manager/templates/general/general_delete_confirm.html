@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+{% load django_bootstrap5 %}
+
+{% load i18n %}
+
+{% block main %}
+<h1 class="my-4">
+    {{ title }}
+</h1>
+<p>{% translate "Are you sure that want to delete" %} {{ object }}?</p>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-danger" type="submit" value="{{ button }}">
+</form>
+{% endblock %}

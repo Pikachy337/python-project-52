@@ -3,32 +3,32 @@
 {% load i18n %}
 
 {% block main %}
-<div class="container">
-    <h1 class="my-4">{% translate "Users" %}</h1>
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>{% translate "ID" %}</th>
-                <th>{% translate "Username" %}</th>
-                <th>{% translate "Full name" %}</th>
-                <th>{% translate "Created at" %}</th>
-                <th>{% translate "Actions" %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.get_full_name }}</td>
-                <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
-                <td>
-                    <a href="{% url 'users:update' user.id %}" class="btn btn-sm btn-primary">{% translate "Edit" %}</a>
-                    <a href="{% url 'users:delete' user.id %}" class="btn btn-sm btn-danger">{% translate "Delete" %}</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<h1 class="my-4">
+    {{ title }}
+</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{% translate "ID" %}</th>
+        <th>{% translate "Username" %}</th>
+        <th>{% translate "Full name" %}</th>
+        <th>{% translate "Created date" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.created_at|date:'d.m.Y H:i' }}</td>
+        <td>
+            <a href="{% url 'user_update' user.id %}">{% translate "Edit" %}</a>
+            <br>
+            <a href="{% url 'user_delete' user.id %}">{% translate "Delete" %}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

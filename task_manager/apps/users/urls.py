@@ -5,13 +5,14 @@ from .views import (
     UserUpdateView,
     UserDeleteView
 )
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
+from .views import CustomLoginView
 
 urlpatterns = [
     path('', UserListView.as_view(), name='users'),
     path('create/', UserCreateView.as_view(), name='user_create'),
     path('<int:pk>/update/', UserUpdateView.as_view(), name='user_update'),
     path('<int:pk>/delete/', UserDeleteView.as_view(), name='user_delete'),
-    path('login/', LoginView.as_view(template_name='general/general_form.html'), name='login'),
+    path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]
