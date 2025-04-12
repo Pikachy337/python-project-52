@@ -5,8 +5,6 @@
 {% load static %}
 
 {% block navigation %}
-<link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'navbar.css' %}" rel="stylesheet">
 <header class="flex-shrink-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
         <div class="container-fluid">
@@ -47,7 +45,8 @@
                     <li class="nav-item">
                         <form action="{% url 'logout' %}" method="post" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit" class="nav-link btn btn-link" style="border: none; background: none; cursor: pointer;">
+                            <button type="submit" class="nav-link btn btn-link"
+                                    style="border: none; background: none; cursor: pointer;">
                                 {% translate 'Exit' %}
                             </button>
                         </form>
@@ -71,8 +70,7 @@
 {% endblock %}
 
 {% block footer %}
-<link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'footers.css' %}" rel="stylesheet">
+
 
 <footer class="container">
     <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
