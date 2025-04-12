@@ -16,7 +16,6 @@ class HomeView(TemplateView):
 
 
 class BaseView(LoginRequiredMixin):
-    """Базовое представление для всех CRUD операций"""
     success_message = None
 
     def form_valid(self, form):
@@ -25,7 +24,6 @@ class BaseView(LoginRequiredMixin):
 
 
 class OwnerOnlyMixin(UserPassesTestMixin):
-    """Миксин для проверки, что пользователь - автор объекта"""
     permission_denied_message = _("You don't have permission to do this")
 
     def test_func(self):
@@ -37,7 +35,6 @@ class OwnerOnlyMixin(UserPassesTestMixin):
 
 
 class ProtectedDeleteMixin:
-    """Миксин для защиты от удаления связанных объектов"""
     protected_message = None
     protected_url = None
 

@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block main %}
+<h1 class="my-4">
+    {{ title }}
+</h1>
+<a href="/labels/create/">
+    <button class="btn btn-primary">{{ button }}</button>
+</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{% translate "ID" %}</th>
+        <th>{% translate "Label name" %}</th>
+        <th>{% translate "Created date" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for label in labels %}
+    <tr>
+        <td>{{ label.id }}</td>
+        <td>{{ label.name }}</td>
+        <td>{{ label.created_at|date:'d.m.Y H:i' }}</td>
+        <td>
+            <a href="{% url 'labels:update' label.id %}">{% translate 'Edit' %}</a>
+            <br>
+            <a href="{% url 'labels:delete' label.id %}">{% translate 'Delete' %}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

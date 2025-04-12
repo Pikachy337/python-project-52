@@ -1,15 +1,17 @@
 from django.urls import path
 from .views import (
-    TaskListView, TaskCreateView,
-    TaskUpdateView, TaskDeleteView, TaskDetailView
+    TaskListView,
+    TaskCreateView,
+    TaskUpdateView,
+    TaskDeleteView,
+    TaskDetailView
 )
-
-app_name = 'tasks'
+from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
-    path('', TaskListView.as_view(), name='list'),
-    path('create/', TaskCreateView.as_view(), name='create'),
-    path('<int:pk>/', TaskDetailView.as_view(), name='detail'),
-    path('<int:pk>/update/', TaskUpdateView.as_view(), name='update'),
-    path('<int:pk>/delete/', TaskDeleteView.as_view(), name='delete'),
+    path('', TaskListView.as_view(), name='tasks'),
+    path('create/', TaskCreateView.as_view(), name='task_create'),
+    path('<int:pk>/', TaskDetailView.as_view(), name='task_view'),
+    path('<int:pk>/update/', TaskUpdateView.as_view(), name='task_update'),
+    path('<int:pk>/delete/', TaskDeleteView.as_view(), name='task_delete'),
 ]

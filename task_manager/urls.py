@@ -28,18 +28,9 @@ urlpatterns += i18n_patterns(
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('login/', LoginView.as_view(template_name='general/general_form.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-
-    # Users
     path('users/', include('task_manager.apps.users.urls')),
-
-    # Statuses
     path('statuses/', include('task_manager.apps.statuses.urls')),
-
-    # Tasks
     path('tasks/', include('task_manager.apps.tasks.urls')),
-
-    # Labels
     path('labels/', include('task_manager.apps.labels.urls')),
-
     path('admin/', admin.site.urls),
 )

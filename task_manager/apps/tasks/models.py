@@ -1,13 +1,13 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 from task_manager.apps.statuses.models import Status
 
 User = get_user_model()
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=150, verbose_name=_('Name'))
+    name = models.CharField(max_length=100, verbose_name=_('Name'))
     description = models.TextField(blank=True, verbose_name=_('Description'))
     status = models.ForeignKey(
         Status,
@@ -24,15 +24,24 @@ class Task(models.Model):
         User,
         on_delete=models.PROTECT,
         related_name='assigned_tasks',
-        blank=True,
         null=True,
+        blank=True,
         verbose_name=_('Executor')
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
 
     class Meta:
         verbose_name = _('Task')
         verbose_name_plural = _('Tasks')
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
+
+class TaskLabel(models.Model):
+    task = models.ForeignKey('Task', on_delete=models.CASCADE)
+    label = models.ForeignKey('labels.Label', on_delete=models.PROTECT)
+
+    class Meta:
+        unique_together = [['task', 'label']]
