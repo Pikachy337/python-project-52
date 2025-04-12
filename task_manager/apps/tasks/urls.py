@@ -1,12 +1,12 @@
 from django.urls import path
+
 from .views import (
-    TaskListView,
     TaskCreateView,
-    TaskUpdateView,
     TaskDeleteView,
-    TaskDetailView
+    TaskDetailView,
+    TaskListView,
+    TaskUpdateView,
 )
-from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path('', TaskListView.as_view(), name='tasks'),

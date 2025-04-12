@@ -1,13 +1,18 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.shortcuts import redirect
-from django.db import models
-from .models import Task
-from .forms import TaskForm
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
+
 from .filters import TaskFilter
+from .forms import TaskForm
+from .models import Task
 
 
 class TaskListView(LoginRequiredMixin, ListView):

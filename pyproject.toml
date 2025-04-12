@@ -11,7 +11,9 @@ description = "Task manager"
 packages = [
     { include = "task_manager" },
 ]
-authors = ["Dmitry Yarinsky <pikachyshkaa@gmail.com>"]
+authors = [
+    { name = "Your Name", email = "email@example.com" }
+]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

@@ -1,14 +1,15 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import TemplateView
 from django.contrib import messages
-from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db import models
 from django.shortcuts import redirect
-from django.contrib.auth import logout
-from django.views import View
 from django.urls import reverse_lazy
-from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator
+from django.utils.translation import gettext_lazy as _
+from django.views import View
+from django.views.decorators.http import require_POST
+from django.views.generic import TemplateView
+
 
 class HomeView(TemplateView):
     template_name = 'home.html'

@@ -8,7 +8,7 @@ dev:
 	python manage.py runserver
 
 lint:
-	uv run ruff check .
+	ruff check task_manager/
 
 lint-fix:
 	uv run ruff check --fix .

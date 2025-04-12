@@ -1,12 +1,13 @@
-from django.urls import path
-from .views import (
-    UserListView,
-    UserCreateView,
-    UserUpdateView,
-    UserDeleteView
-)
 from django.contrib.auth.views import LogoutView
-from .views import CustomLoginView
+from django.urls import path
+
+from .views import (
+    CustomLoginView,
+    UserCreateView,
+    UserDeleteView,
+    UserListView,
+    UserUpdateView,
+)
 
 urlpatterns = [
     path('', UserListView.as_view(), name='users'),

@@ -1,11 +1,11 @@
 from django.urls import path
+
 from .views import (
-    StatusListView,
     StatusCreateView,
+    StatusDeleteView,
+    StatusListView,
     StatusUpdateView,
-    StatusDeleteView
 )
-from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path('', StatusListView.as_view(), name='statuses'),
