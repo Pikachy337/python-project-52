@@ -22,5 +22,6 @@ class LabelForm(forms.ModelForm):
         name = self.cleaned_data['name']
         if Label.objects.filter(name=name).exists():
             if self.instance.pk is None or self.instance.name != name:
-                raise forms.ValidationError(_('Label with this name already exists'))
+                raise forms.ValidationError(_('Label with this name'
+                                              ' already exists'))
         return name

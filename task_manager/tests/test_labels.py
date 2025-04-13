@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Label
+from task_manager.apps.labels.models import Label
 
 User = get_user_model()
 
@@ -32,6 +32,7 @@ class LabelTestCase(TestCase):
 
     def test_label_delete_view(self):
         self.client.login(username='testuser', password='testpass123')
-        response = self.client.post(reverse('labels:delete', args=[self.label.id]))
+        response = self.client.post(reverse('labels:delete',
+                                            args=[self.label.id]))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Label.objects.filter(id=self.label.id).exists())

@@ -20,7 +20,7 @@ class HomeView(TemplateView):
         return context
 
 
-@method_decorator(require_POST, name='dispatch')  # Разрешаем только POST
+@method_decorator(require_POST, name='dispatch')
 class LogoutUser(View):
     def post(self, request, *args, **kwargs):
         logout(request)

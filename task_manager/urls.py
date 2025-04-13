@@ -28,7 +28,8 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('login/', LoginView.as_view(template_name='general/general_form.html'), name='login'),
+    path('login/', LoginView.as_view(template_name='general/general_form.html'),
+         name='login'),
     path('logout/', LogoutUser.as_view(), name='logout'),
     path('users/', include('task_manager.apps.users.urls')),
     path('statuses/', include('task_manager.apps.statuses.urls')),

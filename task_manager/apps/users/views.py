@@ -59,7 +59,8 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'general/general_form.html'
     success_url = reverse_lazy('users')
     success_message = _('User successfully updated')
-    permission_denied_message = _("You don't have permission to edit another user")
+    permission_denied_message = _("You don't have"
+                                  " permission to edit another user")
 
     def test_func(self):
         return self.get_object() == self.request.user
@@ -80,7 +81,8 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'general/general_delete_confirm.html'
     success_url = reverse_lazy('users')
     success_message = _('User successfully deleted')
-    permission_denied_message = _("You don't have permission to delete another user")
+    permission_denied_message = _("You don't have"
+                                  " permission to delete another user")
     protected_message = _('Cannot delete user because it is in use')
     protected_url = reverse_lazy('users')
 

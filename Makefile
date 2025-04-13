@@ -8,7 +8,10 @@ dev:
 	python manage.py runserver
 
 lint:
-	flake8 .
+	uv run ruff check .
+
+lint-fix:
+	uv run ruff check --fix .
 
 start:
 	python manage.py runserver
@@ -19,7 +22,7 @@ render-start:
 build:
 	./build.sh
 
-tests:
+test:
 	python manage.py test
 
 migrate:
