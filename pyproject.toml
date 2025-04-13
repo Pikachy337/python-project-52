@@ -1,9 +1,33 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "hexlet-code"
+version = "0.1.0"
+description = "Task manager"
+authors = [
+    { name = "Dmitry Yarinsky", email = "pikachyshkaa@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.0.7",
+    "django-bootstrap5>=24.2",
+    "whitenoise>=6.7.0",
+    "psycopg2-binary>=2.9.9",
+    "dj-database-url>=2.2.0",
+    "python-dotenv>=1.0.1",
+    "gunicorn>=22.0.0",
+    "rollbar>=1.3.0",
+    "django-filter>=23.3"
+]
+
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
 description = "Task manager"
 authors = ["Dmitry Yarinsky <pikachyshkaa@gmail.com>"]
-readme = "README.md"
 packages = [
     { include = "task_manager" }
 ]
@@ -24,7 +48,3 @@ django-filter = "^23.3"
 flake8 = "^7.0.0"
 pytest = "^8.1.1"
 ruff = "^0.11.5"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
