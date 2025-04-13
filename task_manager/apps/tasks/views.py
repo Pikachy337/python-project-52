@@ -33,6 +33,11 @@ class TaskListView(LoginRequiredMixin, ListView):
         context['filter'] = self.filterset
         return context
 
+    def get_filterset_kwargs(self, **kwargs):
+        kwargs = super().get_filterset_kwargs(**kwargs)
+        kwargs['user'] = self.request.user
+        return kwargs
+
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
