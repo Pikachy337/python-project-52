@@ -46,15 +46,18 @@ class UserTestCase(TestCase):
 
     def test_user_delete_view(self):
         self.client.login(username='admin', password='adminpass')
-        response = self.client.post(reverse('user_delete', args=[self.admin.id]))
+        response = self.client.post(reverse('user_delete',
+                                            args=[self.admin.id]))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(User.objects.filter(id=self.admin.id).exists())
 
         self.client.login(username='testuser', password='testpass')
-        response = self.client.post(reverse('user_delete', args=[self.other_user.id]))
+        response = self.client.post(reverse('user_delete',
+                                            args=[self.other_user.id]))
         self.assertEqual(response.status_code, 403)
 
     def test_cannot_delete_other_user(self):
         self.client.login(username='testuser', password='testpass')
-        response = self.client.post(reverse('user_delete', args=[self.admin.id]))
+        response = self.client.post(reverse('user_delete',
+                                            args=[self.admin.id]))
         self.assertEqual(response.status_code, 403)
