@@ -6,6 +6,8 @@ certifi==2025.1.31
     # via requests
 charset-normalizer==3.4.1
     # via requests
+click==8.1.8
+    # via uvicorn
 dj-database-url==2.3.0
     # via hexlet-code (pyproject.toml)
 django==5.2
@@ -20,14 +22,20 @@ django-filter==25.1
     # via hexlet-code (pyproject.toml)
 gunicorn==23.0.0
     # via hexlet-code (pyproject.toml)
+h11==0.14.0
+    # via uvicorn
 idna==3.10
     # via requests
+load-dotenv==0.1.0
+    # via hexlet-code (pyproject.toml)
 packaging==24.2
     # via gunicorn
 psycopg2-binary==2.9.10
     # via hexlet-code (pyproject.toml)
 python-dotenv==1.1.0
-    # via hexlet-code (pyproject.toml)
+    # via
+    #   hexlet-code (pyproject.toml)
+    #   load-dotenv
 requests==2.32.3
     # via rollbar
 rollbar==1.3.0
@@ -38,5 +46,7 @@ typing-extensions==4.13.2
     # via dj-database-url
 urllib3==2.4.0
     # via requests
+uvicorn==0.34.1
+    # via hexlet-code (pyproject.toml)
 whitenoise==6.9.0
     # via hexlet-code (pyproject.toml)
