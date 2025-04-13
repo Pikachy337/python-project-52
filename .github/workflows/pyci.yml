@@ -21,7 +21,7 @@ jobs:
           make install
       - name: Run linter and pytest
         run: |
-          make check
+          make lint
       - name: Run Tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
