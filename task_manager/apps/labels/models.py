@@ -4,14 +4,12 @@ from django.utils.translation import gettext_lazy as _
 
 class Label(models.Model):
     name = models.CharField(
-        max_length=100,
-        unique=True,
-        verbose_name=_('Name')
-    )
+
+        max_length=150, unique=True, verbose_name=_('Label name'))
+
     created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name=_('Created at')
-    )
+
+        auto_now_add=True, verbose_name=_('Created'))
 
     class Meta:
         verbose_name = _('Label')
