@@ -25,5 +25,27 @@ build:
 test:
 	python manage.py test
 
+test-cov:
+	uv run coverage run ./manage.py test
+	uv run coverage xml
+
 migrate:
 	python manage.py migrate
+
+sync:
+	uv sync
+
+migrations:
+	python manage.py makemigrations
+
+migrations-user:
+	python manage.py makemigrations user
+
+collectstatic:
+	python manage.py collectstatic --no-input
+
+translate-compile:
+	django-admin compilemessages
+
+translate-makemessages:
+	django-admin makemessages -l ru

@@ -21,8 +21,7 @@ jobs:
           make install
       - name: Run linter and pytest
         run: |
-          make lint
-          make test
+          make check
       - name: Run Tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
@@ -37,3 +36,11 @@ jobs:
           pip install whitenoise
           pip install pytest-django
           make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v5.0.0
+        if: github.ref_name == 'main'
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-cov
+          debug: true
