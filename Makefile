@@ -1,5 +1,6 @@
 install:
-	pip install -r requirements.txt
+	uv venv
+	uv pip install -r requirements.txt
 
 dev:
 	python manage.py runserver
