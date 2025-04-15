@@ -1,0 +1,26 @@
+[
+  {
+    "model": "status.Status",
+    "pk": 1,
+    "fields": {
+      "name": "online-test",
+      "created_at": "2025-01-01"
+    }
+  },
+  {
+    "model": "status.Status",
+    "pk": 2,
+    "fields": {
+      "name": "offline-test",
+      "created_at": "2025-01-01"
+    }
+  },
+  {
+    "model": "status.Status",
+    "pk": 3,
+    "fields": {
+      "name": "active_test",
+      "created_at": "2025-01-01"
+    }
+  }
+]

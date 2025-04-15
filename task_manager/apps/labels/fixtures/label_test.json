@@ -1,0 +1,26 @@
+[
+  {
+    "model": "label.Label",
+    "pk": 1,
+    "fields": {
+      "name": "home-test",
+      "created_at": "2025-01-01"
+    }
+  },
+  {
+    "model": "label.Label",
+    "pk": 2,
+    "fields": {
+      "name": "work-test",
+      "created_at": "2025-01-01"
+    }
+  },
+  {
+    "model": "label.Label",
+    "pk": 2,
+    "fields": {
+      "name": "travel-test",
+      "created_at": "2025-01-01"
+    }
+  }
+]

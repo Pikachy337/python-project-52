@@ -119,6 +119,14 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
+
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, 'task_manager', 'apps', 'users', 'fixtures'),
+    os.path.join(BASE_DIR, 'task_manager', 'apps', 'tasks', 'fixtures'),
+    os.path.join(BASE_DIR, 'task_manager', 'apps', 'statuses', 'fixtures'),
+    os.path.join(BASE_DIR, 'task_manager', 'apps', 'labels', 'fixtures')
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -144,9 +152,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
