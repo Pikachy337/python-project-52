@@ -9,7 +9,7 @@ load_dotenv()
 def django_db_setup(django_db_setup, django_db_blocker):
     with django_db_blocker.unblock():
         call_command('migrate', '--noinput')
-        
+
 
 @pytest.fixture(autouse=True)
 def load_users(django_db_setup, django_db_blocker):

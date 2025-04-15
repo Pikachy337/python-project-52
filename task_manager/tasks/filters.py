@@ -3,8 +3,8 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
-from task_manager.apps.labels.models import Label
-from task_manager.apps.statuses.models import Status
+from task_manager.labels import Label
+from task_manager.statuses import Status
 
 from .models import Task
 

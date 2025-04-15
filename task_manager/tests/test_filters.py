@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from task_manager.apps.tasks.filters import TaskFilter
-from task_manager.apps.tasks.models import Status, Task
+from task_manager.tasks.filters import TaskFilter
+from task_manager.tasks.models import Status, Task
 
 User = get_user_model()
 
