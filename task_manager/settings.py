@@ -121,10 +121,10 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 FIXTURE_DIRS = [
-    BASE_DIR / 'apps' / 'users' / 'fixtures' / 'user_test.json',
-    BASE_DIR / 'apps' / 'tasks' / 'fixtures' / 'task_test.json',
-    BASE_DIR / 'apps' / 'statuses' / 'fixtures' / 'status_test.json',
-    BASE_DIR / 'apps' / 'labels' / 'fixtures' / 'label_test.json'
+    BASE_DIR / 'apps' / 'users' / 'fixtures' / 'user.json',
+    BASE_DIR / 'apps' / 'tasks' / 'fixtures' / 'task.json',
+    BASE_DIR / 'apps' / 'statuses' / 'fixtures' / 'status.json',
+    BASE_DIR / 'apps' / 'labels' / 'fixtures' / 'label.json'
 ]
 
 # Internationalization
