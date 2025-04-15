@@ -121,10 +121,10 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 FIXTURE_DIRS = [
-    os.path.join(BASE_DIR, 'task_manager', 'apps', 'users', 'fixtures'),
-    os.path.join(BASE_DIR, 'task_manager', 'apps', 'tasks', 'fixtures'),
-    os.path.join(BASE_DIR, 'task_manager', 'apps', 'statuses', 'fixtures'),
-    os.path.join(BASE_DIR, 'task_manager', 'apps', 'labels', 'fixtures')
+    BASE_DIR / 'apps' / 'users' / 'fixtures' / 'user_test.json',
+    BASE_DIR / 'apps' / 'tasks' / 'fixtures' / 'task_test.json',
+    BASE_DIR / 'apps' / 'statuses' / 'fixtures' / 'status_test.json',
+    BASE_DIR / 'apps' / 'labels' / 'fixtures' / 'label_test.json'
 ]
 
 # Internationalization
