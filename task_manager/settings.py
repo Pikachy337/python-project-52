@@ -45,10 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task_manager',
-    'task_manager.apps.users',
-    'task_manager.apps.statuses',
-    'task_manager.apps.tasks',
-    'task_manager.apps.labels',
+    'task_manager.users',
+    'task_manager.statuses',
+    'task_manager.tasks',
+    'task_manager.labels',
     'django_filters',
 ]
 
@@ -121,10 +121,10 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 FIXTURE_DIRS = [
-    BASE_DIR / 'apps' / 'users' / 'fixtures' / 'user.json',
-    BASE_DIR / 'apps' / 'tasks' / 'fixtures' / 'task.json',
-    BASE_DIR / 'apps' / 'statuses' / 'fixtures' / 'status.json',
-    BASE_DIR / 'apps' / 'labels' / 'fixtures' / 'label.json'
+    BASE_DIR / 'users' / 'fixtures' / 'user.json',
+    BASE_DIR / 'tasks' / 'fixtures' / 'task.json',
+    BASE_DIR / 'statuses' / 'fixtures' / 'status.json',
+    BASE_DIR / 'labels' / 'fixtures' / 'label.json'
 ]
 
 # Internationalization
