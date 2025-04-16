@@ -18,12 +18,7 @@ class UserForm(UserCreationForm):
         label=_('Last name'),
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
-    email = forms.EmailField(
-        max_length=254,
-        required=True,
-        label=_('Email'),
-        widget=forms.EmailInput(attrs={'class': 'form-control'})
-    )
+
 
     class Meta:
         model = User
@@ -31,7 +26,6 @@ class UserForm(UserCreationForm):
             'first_name',
             'last_name',
             'username',
-            'email',
             'password1',
             'password2'
         ]
