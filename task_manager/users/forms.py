@@ -19,7 +19,6 @@ class UserForm(UserCreationForm):
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
 
-
     class Meta:
         model = User
         fields = [
