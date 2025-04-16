@@ -238,7 +238,7 @@ msgstr "Вход"
 
 #: task_manager/apps/users/views.py:31
 msgid "Enter"
-msgstr "Вход"
+msgstr "Войти"
 
 #: task_manager/apps/users/views.py:43
 msgid "User successfully registered"
