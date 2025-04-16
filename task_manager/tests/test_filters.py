@@ -11,14 +11,10 @@ class FilterTestCase(TestCase):
     def setUp(self):
         self.status1 = Status.objects.create(name='online-test')
         self.status2 = Status.objects.create(name='offline-test')
-        self.author1 = User.objects.create_user(username='author1',
-                                                email='author1@example.com')
-        self.author2 = User.objects.create_user(username='author2',
-                                                email='author2@example.com')
-        self.executor1 = User.objects.create_user(username='executor1',
-                                                  email='executor1@example.com')
-        self.executor2 = User.objects.create_user(username='executor2',
-                                                  email='executor2@example.com')
+        self.author1 = User.objects.create_user(username='author1')
+        self.author2 = User.objects.create_user(username='author2')
+        self.executor1 = User.objects.create_user(username='executor1')
+        self.executor2 = User.objects.create_user(username='executor2')
 
         self.task1 = Task.objects.create(
             name='Task 1',

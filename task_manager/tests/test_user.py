@@ -9,19 +9,16 @@ class UserTestCase(TestCase):
     def setUp(self):
         self.admin = User.objects.create_superuser(
             username='admin',
-            email='admin@example.com',
             password='adminpass'
         )
         self.user = User.objects.create_user(
             username='testuser',
-            email='user@example.com',
             password='testpass',
             first_name='Test',
             last_name='User'
         )
         self.other_user = User.objects.create_user(
             username='otheruser',
-            email='otheruser@example.com',
             password='otherpass',
             first_name='Other',
             last_name='User'
@@ -33,7 +30,6 @@ class UserTestCase(TestCase):
             'username': 'newuser',
             'first_name': 'New',
             'last_name': 'User',
-            'email': 'new@example.com',
             'password1': 'ComplexPass123',
             'password2': 'ComplexPass123'
         })

@@ -13,12 +13,10 @@ class TaskTestCase(TestCase):
         self.status = Status.objects.create(name='Test Status')
         self.user = User.objects.create_user(
             username='testuser',
-            email='test@example.com',
             password='testpass'
         )
         self.other_user = User.objects.create_user(
             username='otheruser',
-            email='other@example.com',
             password='testpass'
         )
         self.task = Task.objects.create(

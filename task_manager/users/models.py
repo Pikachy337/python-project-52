@@ -6,8 +6,6 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractUser):
     first_name = models.CharField(max_length=150, verbose_name=_('First name'))
     last_name = models.CharField(max_length=150, verbose_name=_('Last name'))
-    email = models.EmailField(max_length=254, unique=True,
-                              verbose_name=_('Email'))
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name=_('Created at'))
 
