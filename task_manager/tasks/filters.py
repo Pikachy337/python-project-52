@@ -31,17 +31,21 @@ class TaskFilter(django_filters.FilterSet):
         widget=forms.Select(attrs={'class': 'form-select'})
     )
 
+    author = django_filters.ModelChoiceFilter(
+        queryset=User.objects.all(),
+        label=_('Author'),
+        widget=forms.Select(attrs={'class': 'form-select'})
+    )
+
     self_tasks = django_filters.BooleanFilter(
         method='filter_self_tasks',
         label=_('Only my tasks'),
-        widget=forms.CheckboxInput(),
-        initial=False,
-        required=False
+        widget=forms.CheckboxInput()
     )
 
     class Meta:
         model = Task
-        fields = ['status', 'executor', 'labels', 'self_tasks']
+        fields = ['status', 'executor', 'labels', 'author', 'self_tasks']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
