@@ -23,7 +23,7 @@ msgstr ""
 #: task_manager/apps/labels/forms.py:14
 #: task_manager/templates/label/label_list.html:16
 msgid "Label name"
-msgstr "Имя метки"
+msgstr "Имя"
 
 #: task_manager/apps/labels/forms.py:18 task_manager/apps/labels/models.py:9
 #: task_manager/apps/statuses/forms.py:15
@@ -146,7 +146,7 @@ msgstr "Исполнитель"
 
 #: task_manager/apps/tasks/filters.py:29
 msgid "Only my tasks"
-msgstr "Только мои задачи"
+msgstr "Только свои задачи"
 
 #: task_manager/apps/tasks/models.py:12
 msgid "Description"
@@ -285,8 +285,8 @@ msgid "Are you sure that want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
 #: task_manager/templates/home.html:11
-msgid "Hello from Hexlet"
-msgstr "Привет от Хекслета"
+msgid "Hello from Hexlet!"
+msgstr "Привет от Хекслета!"
 
 #: task_manager/templates/home.html:12
 msgid "The practic courses by a programming"
@@ -306,7 +306,7 @@ msgstr "Выход"
 
 #: task_manager/templates/index.html:56
 msgid "Sign in"
-msgstr "Войти"
+msgstr "Вход"
 
 #: task_manager/templates/index.html:59
 msgid "Sign up"
@@ -344,7 +344,7 @@ msgstr "Удалить"
 
 #: task_manager/templates/status/status_list.html:16
 msgid "Status name"
-msgstr "Название статуса"
+msgstr "Имя"
 
 #: task_manager/templates/task/task_detail.html:38
 msgid "No labels assigned"
@@ -360,7 +360,7 @@ msgstr "Показать"
 
 #: task_manager/templates/task/task_list.html:29
 msgid "Task name"
-msgstr "Название задачи"
+msgstr "Имя"
 
 #: task_manager/templates/user/list.html:14
 msgid "Full name"
