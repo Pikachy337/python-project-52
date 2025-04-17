@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.views import LoginView
 from django.db import models
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -19,6 +20,19 @@ class HomeView(TemplateView):
         context['title'] = _('Task Manager')
         return context
 
+class CustomLoginView(LoginView):
+    template_name = 'general/general_form.html'
+    success_message = _('You have successfully logged in')  # Добавляем сообщение
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Login')
+        context['button'] = _('Enter')
+        return context
+
+    def get_success_url(self):
+        messages.success(self.request, self.success_message)  # Добавляем сообщение при успешном входе
+        return reverse_lazy('home')
 
 @method_decorator(require_POST, name='dispatch')
 class LogoutUser(View):
