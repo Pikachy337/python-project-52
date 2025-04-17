@@ -20,9 +20,10 @@ class HomeView(TemplateView):
         context['title'] = _('Task Manager')
         return context
 
+
 class CustomLoginView(LoginView):
     template_name = 'general/general_form.html'
-    success_message = _('You have successfully logged in')  # Добавляем сообщение
+    success_message = _('You have successfully logged in')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,8 +32,9 @@ class CustomLoginView(LoginView):
         return context
 
     def get_success_url(self):
-        messages.success(self.request, self.success_message)  # Добавляем сообщение при успешном входе
+        messages.success(self.request, self.success_message)
         return reverse_lazy('home')
+
 
 @method_decorator(require_POST, name='dispatch')
 class LogoutUser(View):

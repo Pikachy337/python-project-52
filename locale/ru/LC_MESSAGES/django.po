@@ -374,7 +374,7 @@ msgstr "Менеджер задач"
 #, fuzzy
 #| msgid "Label successfully deleted"
 msgid "You have successfully logged in"
-msgstr "Вы вошли"
+msgstr "Вы залогинены"
 
 #: task_manager/views.py:41
 msgid "You were logged out"
