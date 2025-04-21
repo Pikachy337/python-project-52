@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-17 01:07+0000\n"
+"POT-Creation-Date: 2025-04-21 14:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -318,11 +318,11 @@ msgstr "Подтверждение пароля"
 msgid "User"
 msgstr "Пользователь"
 
-#: task_manager/users/views.py:30 task_manager/views.py:29
+#: task_manager/users/views.py:30 task_manager/views.py:25
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/users/views.py:31 task_manager/views.py:30
+#: task_manager/users/views.py:31 task_manager/views.py:25
 msgid "Enter"
 msgstr "Войти"
 
@@ -366,23 +366,14 @@ msgstr "Нельзя удалить пользователя, так как он
 msgid "Delete user"
 msgstr "Удалить пользователя"
 
-#: task_manager/views.py:20
+#: task_manager/views.py:18
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/views.py:25
-#, fuzzy
-#| msgid "Label successfully deleted"
-msgid "You have successfully logged in"
+#: task_manager/views.py:26
+msgid "You were login"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:41
-msgid "You were logged out"
-msgstr "Вы вышли из системы"
-
-#: task_manager/views.py:54
-msgid "You don't have permission to do this"
-msgstr "У вас нет прав для этого действия"
-
-#~ msgid "Email"
-#~ msgstr "Email"
+#: task_manager/views.py:33
+msgid "You were logout"
+msgstr "Вы разлогинены"
