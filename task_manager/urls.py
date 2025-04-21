@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from task_manager.views import LoginUser, LogoutUser, HomeView
+from task_manager.views import HomeView, LoginUser, LogoutUser
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
