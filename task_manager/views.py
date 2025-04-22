@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth.views import LogoutView as DjangoLogoutView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -20,15 +20,22 @@ class HomeView(TemplateView):
 
 
 class LoginUser(SuccessMessageMixin, LoginView):
-    form_class = AuthenticationForm
     template_name = 'general/general_form.html'
-    extra_context = {'title': _("Login"), 'button': _("Enter")}
-    success_message = _('You were login')
+    success_message = _('You were successfully logged in!')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'title': _('Login'),
+            'button': _('Enter')
+        })
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('home')
 
 
-class LogoutUser(View):
-
-    def get(self, request, *args, **kwargs):
-        logout(request)
-        messages.info(request, _("You were logout"))
-        return redirect(reverse_lazy('home'))
+class LogoutUser(DjangoLogoutView):
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _("You were logged out"))
+        return super().dispatch(request, *args, **kwargs)
