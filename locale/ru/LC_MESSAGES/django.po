@@ -330,7 +330,7 @@ msgstr "Зарегистрировать"
 
 #: task_manager/users/views.py:47
 msgid "User successfully updated"
-msgstr "Пользователь успешно обновлен"
+msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:48 task_manager/users/views.py:75
 msgid "You don't have permission to edit another user"
