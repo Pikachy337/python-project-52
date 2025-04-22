@@ -9,6 +9,7 @@ from django.views.generic import (
     ListView,
     UpdateView,
 )
+from django.shortcuts import redirect
 
 from .filters import TaskFilter
 from .forms import TaskForm
@@ -87,14 +88,20 @@ class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         return self.get_object().author == self.request.user
 
+    def handle_no_permission(self):
+        messages.error(self.request, self.permission_denied_message)
+        return redirect('tasks')
+
     def form_valid(self, form):
         messages.success(self.request, self.success_message)
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Delete task')
-        context['button'] = _('Yes, delete')
+        context.update({
+            'title': _('Delete task'),
+            'button': _('Yes, delete')
+        })
         return context
 
 

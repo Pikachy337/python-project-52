@@ -65,7 +65,7 @@ msgstr "Создать"
 
 #: task_manager/labels/views.py:44
 msgid "Label successfully updated"
-msgstr "Метка успешно обновлена"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:48
 msgid "Change"
@@ -81,8 +81,6 @@ msgid "Yes, delete"
 msgstr "Да, удалить"
 
 #: task_manager/labels/views.py:66
-#, fuzzy
-#| msgid "Label successfully deleted"
 msgid "Label was deleted successfully"
 msgstr "Метка успешно удалена"
 
@@ -117,7 +115,7 @@ msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:48
 msgid "Status successfully updated"
-msgstr "Статус успешно обновлен"
+msgstr "Статус успешно изменен"
 
 #: task_manager/statuses/views.py:56
 msgid "Update status"
@@ -183,7 +181,7 @@ msgstr "Задача успешно создана"
 
 #: task_manager/tasks/views.py:67
 msgid "Task successfully updated"
-msgstr "Задача успешно обновлена"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/views.py:75
 msgid "Update task"
