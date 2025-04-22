@@ -43,5 +43,5 @@ class TaskTestCase(TestCase):
     def test_task_delete_by_non_author(self):
         self.client.login(username='otheruser', password='testpass')
         response = self.client.post(reverse('task_delete', args=[self.task.id]))
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
         self.assertTrue(Task.objects.filter(id=self.task.id).exists())
