@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (
@@ -9,7 +10,6 @@ from django.views.generic import (
     ListView,
     UpdateView,
 )
-from django.shortcuts import redirect
 
 from .filters import TaskFilter
 from .forms import TaskForm
