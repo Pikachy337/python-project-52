@@ -6,6 +6,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.contrib.auth.views import LogoutView as DjangoLogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .forms import UserForm
 from .models import User
@@ -22,17 +24,26 @@ class UserListView(ListView):
         return context
 
 
-class CustomLoginView(LoginView):
+class CustomLoginView(SuccessMessageMixin, LoginView):
     template_name = 'general/general_form.html'
+    success_message = _('You were successfully logged in!')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Login')
-        context['button'] = _('Enter')
+        context.update({
+            'title': _('Login'),
+            'button': _('Enter')
+        })
         return context
 
     def get_success_url(self):
         return reverse_lazy('home')
+
+
+class CustomLogoutView(DjangoLogoutView):
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _("You were logged out"))
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserCreateView(CreateView):
