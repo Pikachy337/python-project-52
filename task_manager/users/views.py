@@ -1,8 +1,5 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.views import LogoutView as DjangoLogoutView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.db import models
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -22,28 +19,6 @@ class UserListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = _('Users')
         return context
-
-
-class CustomLoginView(SuccessMessageMixin, LoginView):
-    template_name = 'general/general_form.html'
-    success_message = _('You were successfully logged in!')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'title': _('Login'),
-            'button': _('Enter')
-        })
-        return context
-
-    def get_success_url(self):
-        return reverse_lazy('home')
-
-
-class CustomLogoutView(DjangoLogoutView):
-    def dispatch(self, request, *args, **kwargs):
-        messages.info(request, _("You were logged out"))
-        return super().dispatch(request, *args, **kwargs)
 
 
 class UserCreateView(CreateView):
