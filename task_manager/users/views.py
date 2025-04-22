@@ -45,11 +45,14 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'general/general_form.html'
     success_url = reverse_lazy('users')
     success_message = _('User successfully updated')
-    permission_denied_message = _("You don't have"
-                                  " permission to edit another user")
+    permission_denied_message = _("You don't have permission to edit another user")
 
     def test_func(self):
         return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.permission_denied_message)
+        return redirect('users')
 
     def form_valid(self, form):
         messages.success(self.request, self.success_message)
@@ -57,8 +60,10 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Edit user')
-        context['button'] = _('Update')
+        context.update({
+            'title': _('Edit user'),
+            'button': _('Update')
+        })
         return context
 
 
@@ -67,13 +72,16 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'general/general_delete_confirm.html'
     success_url = reverse_lazy('users')
     success_message = _('User successfully deleted')
-    permission_denied_message = _("You don't have"
-                                  " permission to delete another user")
+    permission_denied_message = _("You don't have permission to edit another user")
     protected_message = _('Cannot delete user because it is in use')
     protected_url = reverse_lazy('users')
 
     def test_func(self):
         return self.get_object() == self.request.user
+
+    def handle_no_permission(self):
+        messages.error(self.request, self.permission_denied_message)
+        return redirect('users')
 
     def form_valid(self, form):
         try:
@@ -85,6 +93,8 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = _('Delete user')
-        context['button'] = _('Yes, delete')
+        context.update({
+            'title': _('Delete user'),
+            'button': _('Yes, delete')
+        })
         return context
