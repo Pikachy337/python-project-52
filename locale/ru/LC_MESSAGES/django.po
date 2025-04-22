@@ -265,7 +265,7 @@ msgstr "Дата создания"
 #: task_manager/templates/task/task_list.html:46
 #: task_manager/templates/user/list.html:26
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Изменить"
 
 #: task_manager/templates/label/label_list.html:29
 #: task_manager/templates/status/status_list.html:29
@@ -353,11 +353,11 @@ msgstr "Пользователь успешно обновлен"
 
 #: task_manager/users/views.py:73
 msgid "You don't have permission to edit another user"
-msgstr "У вас нет прав редактировать другого пользователя"
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/users/views.py:85
 msgid "Edit user"
-msgstr "Редактировать пользователя"
+msgstr "Изменить пользователя"
 
 #: task_manager/users/views.py:94
 msgid "User successfully deleted"
