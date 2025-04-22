@@ -27,7 +27,7 @@ class TaskListView(LoginRequiredMixin, ListView):
         self.filterset = self.filterset_class(
             self.request.GET,
             queryset=queryset,
-            user=self.request.user  # Важно передать текущего пользователя
+            user=self.request.user
         )
         return self.filterset.qs
 
