@@ -24,9 +24,12 @@ class TaskListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        self.filterset = self.filterset_class(self.request.GET,
-                                              queryset=queryset)
-        return self.filterset.qs.distinct()
+        self.filterset = self.filterset_class(
+            self.request.GET,
+            queryset=queryset,
+            user=self.request.user  # Важно передать текущего пользователя
+        )
+        return self.filterset.qs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -34,11 +37,6 @@ class TaskListView(LoginRequiredMixin, ListView):
         context['button'] = _('Create task')
         context['filter'] = self.filterset
         return context
-
-    def get_filterset_kwargs(self, **kwargs):
-        kwargs = super().get_filterset_kwargs(**kwargs)
-        kwargs['user'] = self.request.user
-        return kwargs
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
