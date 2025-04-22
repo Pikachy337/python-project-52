@@ -3,25 +3,30 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
-
 from .models import Task
 
 User = get_user_model()
 
 
 class TaskForm(forms.ModelForm):
-    labels = forms.ModelMultipleChoiceField(
-        queryset=Label.objects.all(),
-        required=False,
-        widget=forms.SelectMultiple(attrs={'class': 'form-select'}),
-        label=_('Labels')
-    )
-
     executor = forms.ModelChoiceField(
         queryset=User.objects.all(),
-        widget=forms.Select(attrs={'class': 'form-select'}),
+        widget=forms.Select(attrs={
+            'class': 'form-select',
+            'id': 'id_executor'
+        }),
         required=False,
         label=_('Executor')
+    )
+
+    labels = forms.ModelMultipleChoiceField(
+        queryset=Label.objects.all(),
+        widget=forms.SelectMultiple(attrs={
+            'class': 'form-select',
+            'size': '4'
+        }),
+        required=False,
+        label=_('Labels')
     )
 
     class Meta:
