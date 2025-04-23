@@ -10,6 +10,11 @@ User = get_user_model()
 
 
 class TaskForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['executor'].queryset = User.objects.all()
+        self.fields['labels'].queryset = Label.objects.all()
+
     executor = forms.ModelChoiceField(
         queryset=User.objects.all(),
         widget=forms.Select(attrs={

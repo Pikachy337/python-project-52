@@ -11,9 +11,10 @@ from django.views.generic import (
     UpdateView,
 )
 
+from ..labels.models import Label
 from .filters import TaskFilter
 from .forms import TaskForm
-from .models import Task
+from .models import Task, User
 
 
 class TaskListView(LoginRequiredMixin, ListView):
@@ -40,6 +41,13 @@ class TaskListView(LoginRequiredMixin, ListView):
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['initial'] = {
+            'executor': User.objects.all(),
+            'labels': Label.objects.all()
+        }
+        return kwargs
     model = Task
     form_class = TaskForm
     template_name = 'general/general_form.html'
