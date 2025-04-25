@@ -7,7 +7,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=150, verbose_name=_('First name'))
     last_name = models.CharField(max_length=150, verbose_name=_('Last name'))
     created_at = models.DateTimeField(auto_now_add=True,
-                                      verbose_name=_('Created at'))
+                                    verbose_name=_('Created at'))
 
     class Meta:
         db_table = 'users_user'
@@ -19,3 +19,10 @@ class User(AbstractUser):
 
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+    def save(self, *args, **kwargs):
+        if self.username:
+            self.username = self.username
+        if self.email:
+            self.email = self.email
+        super().save(*args, **kwargs)

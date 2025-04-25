@@ -38,3 +38,7 @@ class UserForm(UserCreationForm):
             'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
             'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
         }
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        return username
