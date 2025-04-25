@@ -5,9 +5,11 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
+
 from .models import Task
 
 User = get_user_model()
+
 
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.ModelChoiceFilter(
@@ -43,8 +45,8 @@ class TaskFilter(django_filters.FilterSet):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-        # Отображаем полное имя вместо username в выпадающем списке
-        self.filters['executor'].field.label_from_instance = lambda obj: obj.get_full_name()
+        self.filters['executor'].field.label_from_instance\
+            = lambda obj: obj.get_full_name()
 
     def filter_self_tasks(self, queryset, name, value):
         if value and self.user:
