@@ -46,7 +46,8 @@ class Task(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return self.name
+        executor_name = self.executor.get_full_name() if self.executor else ""
+        return f"{self.name} (Status: {self.status}, Executor: {executor_name})"
 
     def get_executor_display(self):
         return self.executor.get_full_name() if self.executor else ""

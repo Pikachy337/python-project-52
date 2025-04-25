@@ -15,10 +15,10 @@ class User(AbstractUser):
         verbose_name_plural = _('Users')
 
     def __str__(self):
-        return self.username
+        return self.get_full_name()
 
     def get_full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def save(self, *args, **kwargs):
         if self.username:

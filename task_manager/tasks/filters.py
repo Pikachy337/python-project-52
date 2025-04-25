@@ -3,13 +3,11 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
-from task_manager.labels.forms import Label
-from task_manager.statuses.forms import Status
-
+from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
 from .models import Task
 
 User = get_user_model()
-
 
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.ModelChoiceFilter(
@@ -21,7 +19,8 @@ class TaskFilter(django_filters.FilterSet):
     executor = django_filters.ModelChoiceFilter(
         queryset=User.objects.all(),
         label=_('Executor'),
-        widget=forms.Select(attrs={'class': 'form-select'})
+        widget=forms.Select(attrs={'class': 'form-select'}),
+        method='filter_by_executor'
     )
 
     labels = django_filters.ModelChoiceFilter(
@@ -44,8 +43,13 @@ class TaskFilter(django_filters.FilterSet):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
+        # Отображаем полное имя вместо username в выпадающем списке
+        self.filters['executor'].field.label_from_instance = lambda obj: obj.get_full_name()
 
     def filter_self_tasks(self, queryset, name, value):
         if value and self.user:
             return queryset.filter(author=self.user)
         return queryset
+
+    def filter_by_executor(self, queryset, name, value):
+        return queryset.filter(executor=value)
