@@ -30,7 +30,7 @@ class TaskListView(LoginRequiredMixin, ListView):
             queryset=queryset,
             user=self.request.user
         )
-        return self.filterset.qs
+        return self.filterset.qs.distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -48,6 +48,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             'labels': Label.objects.all()
         }
         return kwargs
+
     model = Task
     form_class = TaskForm
     template_name = 'general/general_form.html'
