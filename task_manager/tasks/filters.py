@@ -21,14 +21,14 @@ class TaskFilter(django_filters.FilterSet):
     executor = django_filters.ModelChoiceFilter(
         queryset=User.objects.all(),
         label=_('Executor'),
-        widget=forms.Select(attrs={'class': 'form-select'}),
+        widget=forms.Select(attrs={'class': 'form-select'})
     )
 
     labels = django_filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
         label=_('Label'),
         widget=forms.Select(attrs={'class': 'form-select'}),
-        field_name='labels',
+        method='filter_labels'
     )
 
     self_tasks = django_filters.BooleanFilter(
@@ -50,4 +50,9 @@ class TaskFilter(django_filters.FilterSet):
     def filter_self_tasks(self, queryset, name, value):
         if value and self.user:
             return queryset.filter(author=self.user)
+        return queryset
+
+    def filter_labels(self, queryset, name, value):
+        if value:
+            return queryset.filter(labels=value)
         return queryset
