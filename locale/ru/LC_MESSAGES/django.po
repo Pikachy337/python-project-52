@@ -86,8 +86,8 @@ msgid "Label was deleted successfully"
 msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:71
-msgid "Can't delete, label in use"
-msgstr "Нельзя удалить, метка используется"
+msgid "Can't delete, label"
+msgstr "Невозможно удалить метку"
 
 #: task_manager/statuses/models.py:8
 #: task_manager/templates/status/status_list.html:16

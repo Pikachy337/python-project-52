@@ -68,6 +68,6 @@ class LabelDeleteView(SuccessMessageMixin, DeleteView):
         except ProtectedError:
             messages.error(
                 self.request,
-                _("Can't delete, label in use")
+                _("Can't delete, label")
             )
             return redirect(self.success_url)
