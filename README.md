@@ -1,8 +1,10 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Pikachy337/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Pikachy337/python-project-52/actions)
 [![Python CI](https://github.com/Pikachy337/python-project-52/actions/workflows/pyci.yml/badge.svg)](https://github.com/Pikachy337/python-project-52/actions/workflows/pyci.yml)
-<a href="https://qlty.sh/gh/Pikachy337/projects/python-project-52"><img src="https://qlty.sh/badges/00de5bbb-b1f0-4722-8fb8-dcb815e9266e/maintainability.svg" alt="Maintainability" /></a>  
+<a href="https://qlty.sh/gh/Pikachy337/projects/python-project-52"><img src="https://qlty.sh/badges/00de5bbb-b1f0-4722-8fb8-dcb815e9266e/maintainability.svg" alt="Maintainability" /></a>
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Pikachy337_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Pikachy337_python-project-52)  
 [My deployment project](https://hexlet-code-huv8.onrender.com)
+
 
 A task manager with full CRUD operations for managing:
 - Users
