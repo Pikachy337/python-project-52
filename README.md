@@ -30,8 +30,8 @@ A task manager with full CRUD operations for managing:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/hexlet-code.git
-cd hexlet-code
+https://github.com/Pikachy337/python-project-52.git
+cd python-project-52
 ```
 2. Create and activate virtual environment:
 ```bash
