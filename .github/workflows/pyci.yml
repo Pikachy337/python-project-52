@@ -22,7 +22,7 @@ jobs:
       - name: Run linter and pytest
         run: |
           make lint
-      - name: Run Tests
+      - name: Run Tests and generate coverage report
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
@@ -35,4 +35,15 @@ jobs:
           pip install rollbar
           pip install whitenoise
           pip install pytest-django
-          make test
+          pip install coverage
+
+          coverage run --source='.' manage.py test
+          coverage xml -o coverage.xml
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v1
+        with:
+          sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
+          sonar-token: ${{ secrets.SONAR_TOKEN }}
+          sonar-scanner-options: |
+            -Dsonar.coverageReportPaths=coverage.xml
