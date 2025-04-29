@@ -44,8 +44,8 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['initial'] = {
-            'executor': User.objects.all(),
-            'labels': Label.objects.all()
+            'executor': User.objects.none(),
+            'labels': Label.objects.none()
         }
         return kwargs
 
