@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from ..tasks.models import TaskLabel
 from .forms import LabelForm
 from .models import Label
 
@@ -58,7 +57,7 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
     error_message = _('Cannot delete label')
 
     def form_valid(self, form):
-        if TaskLabel.objects.filter(label=self.get_object()).exists():
+        if self.get_object().tasks.exists():
             messages.error(self.request, self.error_message)
             return redirect(self.success_url)
 
