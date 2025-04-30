@@ -62,19 +62,15 @@ class StatusDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'general/general_delete_confirm.html'
     success_url = reverse_lazy('statuses')
     success_message = _('Status successfully deleted')
-    error_message = _('Cannot delete status')
+    error_message = _('Cannot delete status because it is in use')
 
     def form_valid(self, form):
-        try:
-            if self.get_object().task_set.exists():
-                messages.error(self.request, self.error_message)
-                return redirect(self.success_url)
-
-            messages.success(self.request, self.success_message)
-            return super().form_valid(form)
-        except Exception as e:
-            messages.error(self.request, str(e))
+        if self.get_object().task_set.exists():
+            messages.error(self.request, self.error_message)
             return redirect(self.success_url)
+
+        messages.success(self.request, self.success_message)
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

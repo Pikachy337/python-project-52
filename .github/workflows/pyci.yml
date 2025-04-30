@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests and generate coverage report
         env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           pip install django
           pip install dj_database_url
