@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-29 19:19+0500\n"
+"POT-Creation-Date: 2025-04-30 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,50 +44,50 @@ msgstr "Создать"
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/labels/models.py:16 task_manager/labels/views.py:20
+#: task_manager/labels/models.py:16 task_manager/labels/views.py:21
 #: task_manager/tasks/forms.py:37 task_manager/tasks/models.py:38
 #: task_manager/templates/index.html:40
 #: task_manager/templates/task/task_detail.html:33
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/labels/views.py:21 task_manager/labels/views.py:34
+#: task_manager/labels/views.py:22 task_manager/labels/views.py:35
 msgid "Create label"
 msgstr "Создать метку"
 
-#: task_manager/labels/views.py:30
+#: task_manager/labels/views.py:31
 msgid "Label successfully created"
 msgstr "Метка успешно создана"
 
-#: task_manager/labels/views.py:35 task_manager/statuses/views.py:38
+#: task_manager/labels/views.py:36 task_manager/statuses/views.py:38
 #: task_manager/tasks/views.py:66
 msgid "Create"
 msgstr "Создать"
 
-#: task_manager/labels/views.py:44
+#: task_manager/labels/views.py:45
 msgid "Label successfully updated"
 msgstr "Метка успешно изменена"
 
-#: task_manager/labels/views.py:48
+#: task_manager/labels/views.py:49
 msgid "Change"
 msgstr "Изменить"
 
-#: task_manager/labels/views.py:56
+#: task_manager/labels/views.py:57
 msgid "Label successfully deleted"
 msgstr "Метка успешно удалена"
 
-#: task_manager/labels/views.py:60 task_manager/statuses/views.py:83
+#: task_manager/labels/views.py:58
+msgid "Cannot delete label"
+msgstr "Невозможно удалить метку"
+
+#: task_manager/labels/views.py:71
+msgid "Delete label"
+msgstr "Удалить метку"
+
+#: task_manager/labels/views.py:72 task_manager/statuses/views.py:79
 #: task_manager/tasks/views.py:110 task_manager/users/views.py:100
 msgid "Yes, delete"
 msgstr "Да, удалить"
-
-#: task_manager/labels/views.py:66
-msgid "Label was deleted successfully"
-msgstr "Метка успешно удалена"
-
-#: task_manager/labels/views.py:71
-msgid "Can't delete, label"
-msgstr "Невозможно удалить метку"
 
 #: task_manager/statuses/models.py:8
 #: task_manager/templates/status/status_list.html:16
@@ -135,7 +135,7 @@ msgstr "Статус успешно удален"
 msgid "Cannot delete status"
 msgstr "Невозможно удалить статус"
 
-#: task_manager/statuses/views.py:82
+#: task_manager/statuses/views.py:78
 msgid "Delete status"
 msgstr "Удалить статус"
 
@@ -377,6 +377,9 @@ msgstr "Войти"
 #: task_manager/views.py:37
 msgid "You were logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Label was deleted successfully"
+#~ msgstr "Метка успешно удалена"
 
 #~ msgid "You don't have permission to delete another user"
 #~ msgstr "У вас нет прав удалять другого пользователя"
