@@ -8,6 +8,7 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from .forms import LabelForm
 from .models import Label
+from ..tasks.models import TaskLabel
 
 
 class LabelListView(ListView):
@@ -57,7 +58,7 @@ class LabelDeleteView(LoginRequiredMixin, DeleteView):
     error_message = _('Cannot delete label')
 
     def form_valid(self, form):
-        if self.get_object().tasks.exists():
+        if TaskLabel.objects.filter(label=self.get_object()).exists():
             messages.error(self.request, self.error_message)
             return redirect(self.success_url)
 
