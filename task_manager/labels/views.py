@@ -6,9 +6,9 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from ..tasks.models import TaskLabel
 from .forms import LabelForm
 from .models import Label
-from ..tasks.models import TaskLabel
 
 
 class LabelListView(ListView):
